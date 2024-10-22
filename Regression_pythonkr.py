@@ -115,6 +115,21 @@ for epoch in range(n_epochs):
     if (epoch + 1) % 100 == 0:
         print(f"Эпоха {epoch+1}, MSE: {loss:.4f}")
 
+# 7.5. Формирование уравнения гиперплоскости для ручной модели
+
+# Получение списка признаков (включая bias)
+features = list(X_scaled.columns)
+
+# Формирование уравнения гиперплоскости
+equation_manual = "y = "
+for i in range(len(features)):
+    equation_manual += f"{weights_manual[i][0]:.4f} * {features[i]} + "
+# Удаление последнего знака '+' и пробела
+equation_manual = equation_manual.rstrip(' + ')
+
+print(f"\nУравнение гиперплоскости (ручная модель):\n{equation_manual}")
+
+
 #%%
 # Визуализация функции потерь (MSE) по эпохам
 plt.figure(figsize=(10, 6))
